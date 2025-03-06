@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'NUMBER', defaultValue: '7', description: 'a number to check if its a prime number')
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -15,7 +11,7 @@ pipeline {
         stage('Run Prime Check') {
             steps {
                 script {
-                    sh "export NUMBER=${params.NUMBER} && node isPrime.js"
+                    sh "node isPrime.js"
                 }
             }
         }
