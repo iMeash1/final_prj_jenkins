@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// Getting the number from the Jenkins environment
+// Getting the number from the Jenkins environmenttt
 const inputNumber = parseInt(process.env.NUMBER, 10);
 
 if (isNaN(inputNumber)) {
