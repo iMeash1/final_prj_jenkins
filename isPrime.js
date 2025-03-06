@@ -1,5 +1,13 @@
 const fs = require('fs');
 
+// קבלת מספר לבדיקה מתוך משתנה הסביבה של Jenkins
+const inputNumber = parseInt(process.env.NUMBER, 10);
+
+if (isNaN(inputNumber)) {
+    console.error("Error: No valid number provided. Please set the NUMBER parameter in Jenkins.");
+    process.exit(1);
+}
+
 function isPrime(num) {
     if (num < 2) return `The number ${num} is not a prime number`;
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -8,8 +16,6 @@ function isPrime(num) {
     return `The number ${num} is a prime number`;
 }
 
-// קבלת פרמטר מהסביבה (Jenkins Parameter)
-const inputNumber = parseInt(process.argv[2], 10);
 const result = isPrime(inputNumber);
 
 // יצירת קובץ HTML
