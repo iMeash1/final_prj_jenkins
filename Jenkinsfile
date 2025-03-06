@@ -15,10 +15,24 @@ pipeline {
         stage('Run Prime Check') {
             steps {
                 script {
-                    def result = sh(script: "node isPrime.js ${params.NUMBER}", returnStdout: true).trim()
-                    echo result
+                    sh "node isPrime.js ${params.NUMBER}"
                 }
+            }
+        }
+        
+        stage('Archive Result') {
+            steps {
+                archiveArtifacts artifacts: 'result.html', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                sh "xdg-open result.html || open result.html || start result.html"
             }
         }
     }
 }
+
