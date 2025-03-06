@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// קבלת המספר מהמשתנה סביבה של Jenkins
+// Getting the number from the Jenkins environment
 const inputNumber = parseInt(process.env.NUMBER, 10);
 
 if (isNaN(inputNumber)) {
@@ -18,27 +18,27 @@ function isPrime(num) {
 
 const result = isPrime(inputNumber);
 
-// יצירת קובץ HTML
+// create HTML
 const htmlContent = `
 <!DOCTYPE html>
 <html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תוצאת בדיקת מספר ראשוני</title>
+    <title>Prime number test result</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         .result { font-size: 24px; font-weight: bold; color: #333; }
     </style>
 </head>
 <body>
-    <h1>תוצאת בדיקת מספר ראשוני</h1>
+    <h1>Prime number test result</h1>
     <p class="result">${result}</p>
 </body>
 </html>
 `;
 
-// שמירת התוצאה לקובץ
+// save to file
 fs.writeFileSync('result.html', htmlContent);
 
 console.log("תוצאה נשמרה ל-result.html");
