@@ -56,9 +56,9 @@ pipeline {
 
                 sh """
                 curl -H "Content-Type: application/json" \
-                     -X POST \
-                     -d '${message}' \
-                     ${DISCORD_WEBHOOK_URL}
+	            -X POST \
+	            -d '{"content": "✅ *Jenkins Job Completed Successfully!* \n📄 [View Result](http://192.168.220.130:8080/job/isPrime/13/artifact/result.html)"}' \
+	            https://discord.com/api/webhooks/1347194658215956501/Sq1VovogsVMJ9e9OtgAa1FDopFbPjWP3dZUczqpWUhgtQuBjXB3V69ZIDOEPSGMLAj1-
                 """
             }
         }
