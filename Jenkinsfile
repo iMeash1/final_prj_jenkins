@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'NUMBER', defaultValue: '7', description: 'number to check if its prime')
+        string(name: 'NUMBER', defaultValue: '7', description: 'a number to check if its a prime number')
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/iMeash1/final_prj_jenkins'
+                git branch: 'main', url: 'https://github.com/iMeash1/final_prj_jenkins.git'
             }
         }
 
         stage('Run Prime Check') {
             steps {
                 script {
-                    sh "node isPrime.js ${params.NUMBER}"
+                    sh "export NUMBER=${params.NUMBER} && node isPrime.js"
                 }
             }
         }
